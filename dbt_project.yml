@@ -18,7 +18,7 @@ test-paths: ["tests"]
 seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
-log-path: "dbt_logs"
+log-path: "logs"
 
 
 target-path: "target"  # directory which will store compiled SQL files
