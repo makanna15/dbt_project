@@ -15,13 +15,13 @@
             {% set rows_affected = 0 %}
         {%- endif -%}
 
-        {% if run_result_dict.get('status') == 'success' or run_result_dict.get('status') == 'pass'%}
+        /*{% if run_result_dict.get('status') == 'success' or run_result_dict.get('status') == 'pass'%}
             {% set execution_started_at = run_result_dict["timing"][1].get('started_at') %}
             {% set execution_completed_at = run_result_dict["timing"][1].get('completed_at') %}
         {% else %}
             {% set execution_started_at = '' %}
             {% set execution_completed_at = '' %}
-        {%- endif -%}
+        {%- endif -%}*/
 
         {% set parsed_result_dict = {
                 'result_id': invocation_id ~ '.' ~ node.get('unique_id'),
@@ -40,5 +40,6 @@
                 }%}
         {% do parsed_results.append(parsed_result_dict) %}
     {% endfor %}
+    {{ print(parsed_results) }}
     {{ return(parsed_results) }}
 {% endmacro %}
