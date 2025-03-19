@@ -1,0 +1,8 @@
+version: 2
+ 
+sources:
+  - name: COMMON_DB_LOG
+    database: DEMO
+    schema: COMMON_DB_LOG
+    tables:
+      - name : JOB_LOG_RESULTS

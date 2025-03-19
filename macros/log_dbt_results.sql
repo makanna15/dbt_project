@@ -16,7 +16,8 @@
                         started_at,
                         completed_at,
                         execution_time,
-                        rows_affected
+                        rows_affected,
+                        message
                 ) values
                     {%- for parsed_result_dict in parsed_results -%}
                         (
@@ -31,7 +32,8 @@
                             '{{ parsed_result_dict.get('started_at') }}',
                             '{{ parsed_result_dict.get('completed_at') }}',
                             {{ parsed_result_dict.get('execution_time') }},
-                            {{ parsed_result_dict.get('rows_affected') }}
+                            {{ parsed_result_dict.get('rows_affected') }},
+                            '{{ parsed_result_dict.get('message') }}'
                         ) {{- "," if not loop.last else "" -}}
                     {%- endfor -%}
             {%- endset -%}
