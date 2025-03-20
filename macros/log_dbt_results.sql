@@ -3,37 +3,26 @@
         {%- set parsed_results = parse_dbt_results(results) -%}
         {%- if parsed_results | length  > 0 -%}
             {% set insert_dbt_results_query -%}
-                insert into {{ source('COMMON_DB_LOG', 'JOB_LOG_RESULTS') }}
+                insert into {{ source('COMMON_DB_LOG', 'ERROR_STATS') }}
                     (
-                        result_id,
-                        invocation_id,
-                        unique_id,
-                        database_name,
-                        schema_name,
-                        name,
-                        resource_type,
-                        status,
-                        started_at,
-                        completed_at,
-                        execution_time,
-                        rows_affected,
-                        message
+                        TASK_ID,
+                        TASK_NAME,
+                        LOAD_START_TIME,
+                        LOAD_END_TIME,
+                        DURATION_IN_SECONDS,
+                        STATUS,
+                        ERROR_MSG
                 ) values
                     {%- for parsed_result_dict in parsed_results -%}
                         (
-                            '{{ parsed_result_dict.get('result_id') }}',
-                            '{{ parsed_result_dict.get('invocation_id') }}',
-                            '{{ parsed_result_dict.get('unique_id') }}',
-                            '{{ parsed_result_dict.get('database_name') }}',
-                            '{{ parsed_result_dict.get('schema_name') }}',
-                            '{{ parsed_result_dict.get('name') }}',
-                            '{{ parsed_result_dict.get('resource_type') }}',
-                            '{{ parsed_result_dict.get('status') }}',
-                            '{{ parsed_result_dict.get('started_at') }}',
-                            '{{ parsed_result_dict.get('completed_at') }}',
-                            {{ parsed_result_dict.get('execution_time') }},
-                            {{ parsed_result_dict.get('rows_affected') }},
-                            '{{ parsed_result_dict.get('message') }}'
+                            '{{ parsed_result_dict.get('TASK_ID') }}',
+                            '{{ parsed_result_dict.get('TASK_NAME') }}',
+                            '{{ parsed_result_dict.get('LOAD_START_TIME') }}',
+                            '{{ parsed_result_dict.get('LOAD_END_TIME') }}',
+                            '{{ parsed_result_dict.get('DURATION_IN_SECONDS') }}',
+                            '{{ parsed_result_dict.get('STATUS') }}',
+                            '{{ parsed_result_dict.get('ERROR_MSG') }}',
+                            '{{ parsed_result_dict.get('CREATED_DATE') }}'
                         ) {{- "," if not loop.last else "" -}}
                     {%- endfor -%}
             {%- endset -%}

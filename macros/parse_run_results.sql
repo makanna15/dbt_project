@@ -15,28 +15,16 @@
             {% set rows_affected = 0 %}
         {%- endif -%}
 
-        /*{% if run_result_dict.get('status') == 'success' or run_result_dict.get('status') == 'pass'%}
-            {% set execution_started_at = run_result_dict["timing"][1].get('started_at') %}
-            {% set execution_completed_at = run_result_dict["timing"][1].get('completed_at') %}
-        {% else %}
-            {% set execution_started_at = '' %}
-            {% set execution_completed_at = '' %}
-        {%- endif -%}*/
-
         {% set parsed_result_dict = {
-                'result_id': invocation_id ~ '.' ~ node.get('unique_id'),
-                'invocation_id': invocation_id,
-                'unique_id': node.get('unique_id'),
-                'database_name': node.get('database'),
-                'schema_name': node.get('schema'),
-                'name': node.get('name'),
-                'resource_type': node.get('resource_type'),
-                'status': run_result_dict.get('status'),
-                'started_at': execution_started_at,
-                'completed_at': execution_completed_at,
-                'execution_time': run_result_dict.get('execution_time'),
-                'rows_affected': rows_affected,
-                'message': run_result_dict.get('message')|replace("\n", " -")|replace("'", '"')
+		'TASK_ID' : run_result_dict.get('DBT_CLOUD_JOB_ID'),
+		'TASK_NAME': node.get('unique_id'),
+		'LOAD_START_TIME': execution_started_at,
+		'LOAD_END_TIME': execution_completed_at,
+		'DURATION_IN_SECONDS': run_result_dict.get('execution_time'),
+		'STATUS': run_result_dict.get('status'),
+		'ERROR_MSG': run_result_dict.get('message')|replace("\n", " -")|replace("'", '"')          
+                
+                
                 }%}
         {% do parsed_results.append(parsed_result_dict) %}
     {% endfor %}

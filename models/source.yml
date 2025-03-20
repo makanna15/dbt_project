@@ -6,3 +6,4 @@ sources:
     schema: COMMON_DB_LOG
     tables:
       - name : JOB_LOG_RESULTS
+      - name : ERROR_STATS
