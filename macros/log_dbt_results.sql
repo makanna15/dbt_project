@@ -21,8 +21,7 @@
                             '{{ parsed_result_dict.get('LOAD_END_TIME') }}',
                             '{{ parsed_result_dict.get('DURATION_IN_SECONDS') }}',
                             '{{ parsed_result_dict.get('STATUS') }}',
-                            '{{ parsed_result_dict.get('ERROR_MSG') }}',
-                            '{{ parsed_result_dict.get('CREATED_DATE') }}'
+                            '{{ parsed_result_dict.get('ERROR_MSG') }}'
                         ) {{- "," if not loop.last else "" -}}
                     {%- endfor -%}
             {%- endset -%}
