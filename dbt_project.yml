@@ -37,11 +37,14 @@ clean-targets:         # directories to be removed by `dbt clean`
 # continue to be built as views. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
 
-on-run-end:
-  -  "{{ log_dbt_results(results) }}"
+#on-run-end:
+ # -  "{{ log_dbt_results(results) }}"
   
 models:
   my_new_project:
+#    +database: "{{ get_database_name() }}"
+#    +schema: "{{ get_schema_name() }}"
     # Applies to all files under models/example/
     example:
       +materialized: table
+    
