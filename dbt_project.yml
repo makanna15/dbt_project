@@ -42,8 +42,6 @@ clean-targets:         # directories to be removed by `dbt clean`
   
 models:
   my_new_project:
-#    +database: "{{ get_database_name() }}"
-#    +schema: "{{ get_schema_name() }}"
     # Applies to all files under models/example/
     example:
       +materialized: table

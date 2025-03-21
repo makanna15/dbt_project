@@ -4,9 +4,9 @@
     {%- endset -%}
     {% set result = run_query(database_query) %}
     {% if execute %}
-        {% set tgt_database = result.columns[0].values()[0] %}
+    {% set tgt_database = result.columns[0].values()[0] %}
     {% else %} 
         {% set tgt_database = "ANALYTICS" %}
     {% endif %}
-    {{ return(tgt_database) }}
+    {{ return((tgt_database)) }}
 {% endmacro %}
