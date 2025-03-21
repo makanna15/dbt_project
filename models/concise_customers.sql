@@ -1,1 +1,4 @@
-{{get_database_name()}}
+{{ config(database=get_database_name()) }}
+select id as customer_id, first_name, last_name
+
+from raw.jaffle_shop.customers
