@@ -1,8 +1,4 @@
-{% macro read_column_values_from_snowflake(table_name, column_name) %}
-    {%- set query %}
-        SELECT {{ column_name }} FROM {{ table_name }}
-    {%- endset %}
-    
-    {%- set results = run_query(query) %}
-        {{log(results, info=True)}}
-{% endmacro %}
+{% macro my_macro(column_name,table_name) %}
+          SELECT {{ column_name }} FROM {{ table_name }} WHERE NAME='{{this}}' and 
+          GENERATED_AT=(SELECT MAX(GENERATED_AT) FROM {{ table_name }} WHERE NAME='{{this}}')
+        {% endmacro %}

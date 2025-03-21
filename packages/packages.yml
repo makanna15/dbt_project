@@ -1,0 +1,7 @@
+packages:
+  - package: dbt_labs/dbt_utils
+    version: 1.3.0
+  - package: brooklyn-data/dbt_artifacts
+    version: 2.8.0
+  - package: elementary-data/elementary
+    version: 0.13.1
