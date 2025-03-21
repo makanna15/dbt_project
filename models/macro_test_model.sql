@@ -1,0 +1,1 @@
+{% set column_values = read_column_values_from_snowflake('ANALYTICS.DBT_MKANNA.INGESTION_METADATA_RELATIONAL', 'TARGET_SCHEMA_NAME') %}

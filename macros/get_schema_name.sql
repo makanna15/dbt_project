@@ -6,7 +6,7 @@
     {% if execute %}
         {% set tgt_schema = result.columns[0].values()[0] %}
     {% else %} 
-        {% set tgt_schema = "DBT_MKANNA" %}
+        {% set tgt_schema = "DBT_MKANNA_123" %}
     {% endif %}
     {{ return(tgt_schema) }}
 {% endmacro %}
