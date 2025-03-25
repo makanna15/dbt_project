@@ -7,3 +7,9 @@ sources:
     tables:
       - name : JOB_LOG_RESULTS
       - name : ERROR_STATS
+  - name: JAFFLE_SHOP
+    database: RAW
+    schema: JAFFLE_SHOP
+    tables:
+      - name: ORDERS
+      - name: CUSTOMERS
