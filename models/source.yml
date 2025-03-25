@@ -1,9 +1,9 @@
 version: 2
  
 sources:
-  - name: COMMON_DB_LOG
-    database: DEMO
-    schema: COMMON_DB_LOG
+  - name: JAFFLE_SHOP
+    database: RAW
+    schema: JAFFLE_SHOP
     tables:
-      - name : JOB_LOG_RESULTS
-      - name : ERROR_STATS
+      - name: ORDERS
+      - name: CUSTOMERS
