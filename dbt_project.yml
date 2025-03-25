@@ -49,7 +49,7 @@ on-run-end:
 models:
   my_new_project:
     # Applies to all files under models/example/
-    example:
+    staging:
       +materialized: table
     elementary:
       +schema: "elementary"
