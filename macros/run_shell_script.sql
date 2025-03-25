@@ -1,3 +1,3 @@
-{% macro run_shell_script(scripts/dbt_run_with_retries.sh) %}
-{% do run_query("SELECT system('{}')".format(scripts/dbt_run_with_retries.sh)) %}
+{% macro run_shell_script(script_path) %}
+{% do run_query("SELECT system('{}')".format(script_path)) %}
 {% endmacro %}
