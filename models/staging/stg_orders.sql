@@ -1,10 +1,10 @@
 with raw_orders as (
     select
-        order_id,
-        customer_id,
+        ID,
+        USER_ID,
         order_date,
         status
-    from {{ source('JAFFLE_SHOP', 'orders') }}
+    from {{ source('JAFFLE_SHOP', 'ORDERS') }}
 )
 
 select * from raw_orders
